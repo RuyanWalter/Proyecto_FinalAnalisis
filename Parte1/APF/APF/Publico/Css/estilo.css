@@ -1,0 +1,37 @@
+/* Publico/css/estilo.css */
+
+/* Estilos globales para el navbar */
+.navbar {
+    height: 60px; /* Ajusta aquí la altura del menú */
+    background-color: #343a40; /* Fondo oscuro para el menú */
+}
+
+.navbar-brand img {
+    width: 150px;
+    height: 80px; /* Ajusta la altura del logo */
+}
+
+.nav-link {
+    font-size: 18px; /* Ajusta el tamaño del texto del menú */
+    color: #fff;
+}
+
+.nav-link:hover {
+    color: #ccc; /* Cambia el color cuando el cursor esté encima */
+}
+
+/* Espaciado para las páginas */
+.container {
+    margin-top: 50px;
+}
+
+/* Estilo para las tablas */
+.table-hover tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* Estilos personalizados */
+.text-center {
+    text-align: center;
+}
+    
