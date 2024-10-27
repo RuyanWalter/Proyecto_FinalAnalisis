@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-10-2024 a las 01:22:07
--- Versión del servidor: 10.4.18-MariaDB
--- Versión de PHP: 8.0.3
+-- Tiempo de generación: 27-10-2024 a las 04:08:13
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,16 +35,7 @@ CREATE TABLE `asignaciontareas` (
   `id_produccion` int(11) DEFAULT NULL,
   `fecha_asignacion` date DEFAULT NULL,
   `estado` varchar(20) DEFAULT 'En Proceso'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `asignaciontareas`
---
-
-INSERT INTO `asignaciontareas` (`id_tarea`, `nombre_tarea`, `id_empleado`, `id_unidad`, `id_produccion`, `fecha_asignacion`, `estado`) VALUES
-(53, 'gsdfgsdfgs', 3, 1, 73, '2024-10-18', 'En Proceso'),
-(0, 'asdfasdfasdfasdf', 1, 1, 81, '2024-10-25', 'Completada'),
-(0, 'Pintar', 1, 1, 78, '2024-10-25', 'Completada');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -58,7 +49,7 @@ CREATE TABLE `bitacoraacciones` (
   `accion` varchar(255) NOT NULL,
   `fecha_accion` datetime NOT NULL,
   `descripcion` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -72,7 +63,14 @@ CREATE TABLE `clientes` (
   `telefono_cliente` varchar(20) DEFAULT NULL,
   `email_cliente` varchar(100) DEFAULT NULL,
   `direccion_cliente` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `clientes`
+--
+
+INSERT INTO `clientes` (`id_cliente`, `nombre_cliente`, `telefono_cliente`, `email_cliente`, `direccion_cliente`) VALUES
+(1, 'Walter ', '58944537', 'walter@gmail.com', 'balanya ');
 
 -- --------------------------------------------------------
 
@@ -87,7 +85,7 @@ CREATE TABLE `distribucion` (
   `fecha_entrega` date DEFAULT NULL,
   `estado_envio` varchar(50) DEFAULT 'En Camino',
   `metodo_envio` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -102,7 +100,7 @@ CREATE TABLE `egresomateriaprima` (
   `cantidad_egresada` int(11) NOT NULL,
   `fecha_egreso` date NOT NULL,
   `id_produccion` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `egresomateriaprima`
@@ -115,7 +113,9 @@ INSERT INTO `egresomateriaprima` (`id_egreso`, `codigo_materia_prima`, `nombre_m
 (0, '1111', '', 300, '2024-10-25', 0),
 (0, '1010', '', 10, '2024-10-25', 0),
 (0, '1111', '', 10, '2024-10-25', 0),
-(0, '1111', '', 20, '2024-10-25', 0);
+(0, '1111', '', 20, '2024-10-25', 0),
+(0, '1010', '', 10, '2024-10-25', 82),
+(0, '1010', '', 11, '2024-10-25', 83);
 
 --
 -- Disparadores `egresomateriaprima`
@@ -147,7 +147,7 @@ CREATE TABLE `empleados` (
   `nombre_empleado` varchar(255) NOT NULL,
   `puesto_empleado` varchar(100) DEFAULT NULL,
   `fecha_contratacion` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `empleados`
@@ -171,7 +171,7 @@ CREATE TABLE `historialcomprasmateriaprima` (
   `fecha_compra` date NOT NULL,
   `id_proveedor` int(11) DEFAULT NULL,
   `precio_unitario` decimal(10,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -189,16 +189,16 @@ CREATE TABLE `ingresomateriaprima` (
   `precio_unitario` decimal(10,2) NOT NULL,
   `fecha_ingreso` date NOT NULL,
   `id_proveedor` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `ingresomateriaprima`
 --
 
 INSERT INTO `ingresomateriaprima` (`id_ingreso`, `codigo_materia_prima`, `nombre_materia_prima`, `descripcion`, `unidad_medida`, `cantidad_comprada`, `precio_unitario`, `fecha_ingreso`, `id_proveedor`) VALUES
-(8, '1', 'd', 'prueba finalizada ', 'M', 10, '20.00', '2024-10-23', 2),
-(9, '1010', 'Poliéster', 'Esta es una nueva materia prima ', 'M', 80, '20.00', '2024-10-23', 2),
-(10, '1111', 'Lana', 'la buena', 'Libras', 170, '20.00', '2024-10-24', 2);
+(8, '1', 'd', 'prueba finalizada ', 'M', 10, 20.00, '2024-10-23', 2),
+(9, '1010', 'Poliéster', 'Esta es una nueva materia prima ', 'M', 59, 20.00, '2024-10-23', 2),
+(10, '1111', 'Lana', 'la buena', 'Libras', 170, 20.00, '2024-10-24', 2);
 
 --
 -- Disparadores `ingresomateriaprima`
@@ -231,7 +231,7 @@ CREATE TABLE `inspeccioncalidad` (
   `resultado_inspeccion` varchar(50) NOT NULL,
   `fecha_inspeccion` date NOT NULL,
   `observaciones` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -246,18 +246,19 @@ CREATE TABLE `inventariomateriaprima` (
   `unidad_medida` varchar(50) NOT NULL,
   `total_ingreso` int(11) NOT NULL DEFAULT 0,
   `total_egreso` int(11) NOT NULL DEFAULT 0,
-  `saldo_actual` int(11) GENERATED ALWAYS AS (`total_ingreso` - `total_egreso`) STORED
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `saldo_actual` int(11) GENERATED ALWAYS AS (`total_ingreso` - `total_egreso`) STORED,
+  `cantidad_requerida` int(11) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `inventariomateriaprima`
 --
 
-INSERT INTO `inventariomateriaprima` (`id_inventario`, `codigo_materia_prima`, `nombre_materia_prima`, `unidad_medida`, `total_ingreso`, `total_egreso`) VALUES
-(14, '1010', 'd', 'M', 30, 20),
-(15, '2023', 'Tela de algodon', 'M', 10, 7),
-(16, '1', 'd', 'M', 10, 0),
-(17, '1111', 'Lana', 'Libras', 500, 330);
+INSERT INTO `inventariomateriaprima` (`id_inventario`, `codigo_materia_prima`, `nombre_materia_prima`, `unidad_medida`, `total_ingreso`, `total_egreso`, `cantidad_requerida`) VALUES
+(14, '1010', 'd', 'M', 30, 41, 100),
+(15, '2023', 'Tela de algodon', 'M', 10, 7, 0),
+(16, '1', 'd', 'M', 10, 0, 0),
+(17, '1111', 'Lana', 'Libras', 500, 330, 0);
 
 -- --------------------------------------------------------
 
@@ -272,7 +273,15 @@ CREATE TABLE `ordenescompra` (
   `fecha_orden` date NOT NULL,
   `fecha_estimada_entrega` date DEFAULT NULL,
   `estado` varchar(50) DEFAULT 'Pendiente'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `ordenescompra`
+--
+
+INSERT INTO `ordenescompra` (`id_orden_compra`, `id_materia_prima`, `cantidad_pedida`, `fecha_orden`, `fecha_estimada_entrega`, `estado`) VALUES
+(0, 1, 3, '2024-10-19', '2024-10-26', 'Pendiente'),
+(0, 1, 6, '2024-10-25', '2024-10-26', 'Pendiente');
 
 -- --------------------------------------------------------
 
@@ -289,7 +298,38 @@ CREATE TABLE `pedidos` (
   `fecha_entrega` date DEFAULT NULL,
   `estado` varchar(50) DEFAULT 'Pendiente',
   `id_usuario` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `pedidos`
+--
+
+INSERT INTO `pedidos` (`id_pedido`, `id_cliente`, `id_producto_terminado`, `cantidad_pedida`, `fecha_pedido`, `fecha_entrega`, `estado`, `id_usuario`) VALUES
+(0, 1, 1, 6, '2024-10-25', '2024-10-26', '2024-10-26', 2);
+
+--
+-- Disparadores `pedidos`
+--
+DELIMITER $$
+CREATE TRIGGER `after_delete_pedido` AFTER DELETE ON `pedidos` FOR EACH ROW BEGIN
+    -- Elimina el registro correspondiente en la tabla ordenescompra
+    DELETE FROM ordenescompra
+    WHERE id_materia_prima = OLD.id_producto_terminado
+      AND cantidad_pedida = OLD.cantidad_pedida
+      AND fecha_orden = OLD.fecha_pedido
+      AND fecha_estimada_entrega = OLD.fecha_entrega
+      AND estado = OLD.estado;
+END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `after_insert_pedido` AFTER INSERT ON `pedidos` FOR EACH ROW BEGIN
+    -- Inserta un nuevo registro en la tabla ordenescompra
+    INSERT INTO ordenescompra (id_materia_prima, cantidad_pedida, fecha_orden, fecha_estimada_entrega, estado)
+    VALUES (NEW.id_producto_terminado, NEW.cantidad_pedida, NEW.fecha_pedido, NEW.fecha_entrega, NEW.estado);
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -308,7 +348,7 @@ CREATE TABLE `produccion` (
   `estado` varchar(50) DEFAULT 'En Proceso',
   `id_usuario` int(11) DEFAULT NULL,
   `fecha_fin` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `produccion`
@@ -328,7 +368,9 @@ INSERT INTO `produccion` (`id_produccion`, `nombre_producto`, `cantidad_producid
 (78, 'Gorra', 300, NULL, 5, '2024-10-25', NULL, 'Completada', 4, '2024-10-25'),
 (79, 'Camisas', 10, NULL, 3, '2024-10-25', NULL, 'Completada', 1, '2024-10-25'),
 (80, 'Corpiños', 10, NULL, 2, '2024-10-25', NULL, 'Completada', 2, '2024-10-25'),
-(81, 'Prueba', 20, NULL, 1, '2024-10-25', NULL, 'Completada', 1, '2024-10-25');
+(81, 'Prueba', 20, NULL, 1, '2024-10-25', NULL, 'Completada', 1, '2024-10-25'),
+(82, 'afasd', 10, NULL, 1, '2024-10-25', NULL, 'Completada', 1, '2024-10-25'),
+(83, 'ññññ', 10, NULL, 3, '2024-10-25', NULL, 'En Proceso', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -342,7 +384,14 @@ CREATE TABLE `productosterminados` (
   `cantidad_disponible` int(11) DEFAULT 0,
   `fecha_fabricacion` date NOT NULL,
   `id_produccion` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `productosterminados`
+--
+
+INSERT INTO `productosterminados` (`id_producto_terminado`, `nombre_producto`, `cantidad_disponible`, `fecha_fabricacion`, `id_produccion`) VALUES
+(1, 'Camisass ', 5, '0000-00-00', 1);
 
 -- --------------------------------------------------------
 
@@ -358,7 +407,7 @@ CREATE TABLE `proveedores` (
   `email_proveedor` varchar(100) DEFAULT NULL,
   `direccion_proveedor` varchar(255) DEFAULT NULL,
   `condiciones_pago` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `proveedores`
@@ -379,7 +428,7 @@ CREATE TABLE `unidadesproduccion` (
   `tipo_unidad` varchar(100) DEFAULT NULL,
   `capacidad` int(11) DEFAULT NULL,
   `estado` varchar(50) DEFAULT 'Operativa'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `unidadesproduccion`
@@ -404,7 +453,7 @@ CREATE TABLE `usuarios` (
   `rol` varchar(100) NOT NULL,
   `email` varchar(100) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -419,6 +468,12 @@ INSERT INTO `usuarios` (`id_usuario`, `nombre_usuario`, `rol`, `email`, `passwor
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `asignaciontareas`
+--
+ALTER TABLE `asignaciontareas`
+  ADD PRIMARY KEY (`id_tarea`);
 
 --
 -- Indices de la tabla `ingresomateriaprima`
@@ -443,6 +498,12 @@ ALTER TABLE `produccion`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `asignaciontareas`
+--
+ALTER TABLE `asignaciontareas`
+  MODIFY `id_tarea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT de la tabla `ingresomateriaprima`
 --
 ALTER TABLE `ingresomateriaprima`
@@ -458,7 +519,7 @@ ALTER TABLE `inventariomateriaprima`
 -- AUTO_INCREMENT de la tabla `produccion`
 --
 ALTER TABLE `produccion`
-  MODIFY `id_produccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `id_produccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

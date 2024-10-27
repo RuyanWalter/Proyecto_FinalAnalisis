@@ -24,6 +24,9 @@
                 <li class="nav-item">
                 <a class="nav-link" href="/produccion/generar_informe"> Ver informes de Producción</a>
                 </li>
+                <li class="nav-item">
+                <a class="nav-link" href="../Vista/pedido.php"> Gestion pedidos</a>
+                </li>
             </ul>
         </div>
     </div>

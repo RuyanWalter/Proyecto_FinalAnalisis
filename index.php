@@ -106,28 +106,11 @@ if (isset($_GET['controlador']) || isset($_GET['accion'])) {
     }
 }
 
-
-
-
-
 // Si no hay controlador o acción definidos, mostrar la vista "Seleccionar Módulo"
-///Esta sirve como el index Principal 
-/////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////
 if (!$controlador || !$accion) {
     require_once 'Vista/seleccionarModulo.php';
     exit();
 }
-
-
-///////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
 
 // Verificar si el controlador y la acción existen
 $controladorArchivo = "Controlador/{$controlador}Controller.php";

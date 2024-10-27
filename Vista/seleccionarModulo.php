@@ -15,9 +15,9 @@
                 <a class="btn btn-secondary btn-lg" href="index.php?controlador=MateriaPrima&accion=listar">Gestión de Materia Prima</a>
                 
                 <!-- Enlace para Gestión de Producción -->
+               
                 <a class="btn btn-secondary btn-lg" href="index.php?controlador=Produccion&accion=planificar">Gestión de Producción</a>
-                        <!-- OJO MOFICAR  Tigre -->
-                <a class="btn btn-secondary btn-lg" href="Aca se define la vista principal de la parte 3"> Parte 3</a>
+                <a class="btn btn-secondary btn-lg" href="../Vista/pedido.php">Gestión de Pedidos</a>
             </div>
         </div>
     </div>
